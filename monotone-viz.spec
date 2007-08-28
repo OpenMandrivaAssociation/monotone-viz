@@ -44,7 +44,6 @@ EOF
 mkdir -p %buildroot/%{_datadir}/applications
 cat > %buildroot/%{_datadir}/applications/mandriva-%{name}.desktop << EOF
 [Desktop Entry]
-Encoding=UTF-8
 Name=Monotone-viz
 Comment=Visualizes monotone ancestry graphs
 Exec=%{_bindir}/%{name}
