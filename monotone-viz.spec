@@ -1,17 +1,16 @@
 %define name monotone-viz
-%define version 0.15
-%define release %mkrel 4
+%define version 1.0
+%define release %mkrel 1
 
 Summary: A small GTK+ application that visualizes monotone ancestry graphs
 Name: %{name}
 Version: %{version}
 Release: %{release}
-Source0: %{name}-%{version}.tar.bz2
+Source0: %{name}-%{version}.tar.gz
 License: GPL
 Group: Development/Other
 Url: http://oandrieu.nerim.net/monotone-viz/
-BuildRequires: ocaml-lablgtk2-devel camlp4 libgnomecanvas2-devel libopenssl-static-devel monotone
-BuildRequires: libsqlite3-devel
+BuildRequires: ocaml-lablgtk2-devel findlib camlp4 libgnomecanvas2-devel monotone
 Requires: monotone graphviz
 
 %description
