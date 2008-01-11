@@ -30,14 +30,6 @@ uses the dot program from the Graphviz package.
 %install
 rm -rf %buildroot
 %makeinstall
-install -d -m 0755 %buildroot/%_menudir
-cat << EOF > %buildroot/%{_menudir}/%{name}
-?package(%{name}):command="%{_bindir}/%{name}" \
-needs="X11" section="More Applications/Development/Tools" \
-title="Monotone-viz" longtitle="Visualizes monotone ancestry graphs" \
-accept_url="false" \
-xdg="true"
-EOF
 
 mkdir -p %buildroot/%{_datadir}/applications
 cat > %buildroot/%{_datadir}/applications/mandriva-%{name}.desktop << EOF
@@ -62,7 +54,6 @@ rm -rf %buildroot
 %files
 %defattr(-,root,root)
 %{_bindir}/%{name}
-%{_menudir}/%{name}
 %{_datadir}/applications/*
 %doc COPYING NEWS README
 
