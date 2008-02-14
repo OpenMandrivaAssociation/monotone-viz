@@ -9,6 +9,7 @@ Release: %{release}
 Source0: %{name}-%{version}.tar.gz
 License: GPL
 Group: Development/Other
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Url: http://oandrieu.nerim.net/monotone-viz/
 BuildRequires: ocaml-lablgtk2-devel findlib camlp4 libgnomecanvas2-devel monotone
 Requires: monotone graphviz
