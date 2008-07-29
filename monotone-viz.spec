@@ -1,6 +1,6 @@
 %define name monotone-viz
 %define version 1.0
-%define release %mkrel 1
+%define release %mkrel 3
 
 Summary: A small GTK+ application that visualizes monotone ancestry graphs
 Name: %{name}
