@@ -1,17 +1,18 @@
 %define name monotone-viz
-%define version 1.0
-%define release %mkrel 3
+%define version 1.0.1
+%define release %mkrel 1
 
 Summary: A small GTK+ application that visualizes monotone ancestry graphs
 Name: %{name}
 Version: %{version}
 Release: %{release}
-Source0: %{name}-%{version}.tar.gz
+Source0: %{name}-%{version}-nolablgtk.tar.gz
+Patch0:         monotone-viz-1.0.1-gio.patch
 License: GPL
 Group: Development/Other
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Url: http://oandrieu.nerim.net/monotone-viz/
-BuildRequires: ocaml-lablgtk2-devel findlib camlp4 libgnomecanvas2-devel monotone
+BuildRequires: ocaml ocaml-lablgtk2-devel camlp4 libgnomecanvas2-devel monotone
 Requires: monotone graphviz
 
 %description
@@ -19,10 +20,11 @@ Monotone-viz is a small GTK+ application that visualizes monotone ancestry
 graphs. Monotone is a free distributed version control system. Montone-viz
 is developed in the Objective Caml language, using the GTK+ and
 libgnomecanvas libraries (via LablGTK, an OCaml binding for GTK+), and it
-uses the dot program from the Graphviz package. 
+uses the dot program from the Graphviz package.
 
 %prep
 %setup -q
+%patch0 -p1 -b .gio
 
 %build
 %configure --without-local-lablgtk
@@ -47,13 +49,13 @@ EOF
 rm -rf %buildroot
 
 %if %mdkversion < 200900
-%post 
-%{update_menus} 
+%post
+%{update_menus}
 %endif
 
 %if %mdkversion < 200900
-%postun 
-%{clean_menus} 
+%postun
+%{clean_menus}
 %endif
 
 %files
