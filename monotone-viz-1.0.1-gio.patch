@@ -1,0 +1,36 @@
+diff -up monotone-viz-1.0.1/glib/giochannel.mli.orig monotone-viz-1.0.1/glib/giochannel.mli
+--- monotone-viz-1.0.1/glib/giochannel.mli.orig	2007-03-07 22:53:54.000000000 +0100
++++ monotone-viz-1.0.1/glib/giochannel.mli	2009-02-26 14:15:28.000000000 +0100
+@@ -20,7 +20,7 @@ external new_file : string -> string -> 
+ 
+ external read_chars : t -> ?off:int -> ?len:int -> string -> 
+   [ `NORMAL of int | `AGAIN | `EOF]
+-  = "ml_g_io_channel_read_chars"
++  = "ml_mtnviz_g_io_channel_read_chars"
+ (** @raise Error .
+     @raise Glib.Convert.Error .*)
+ external write_chars : t -> ?bytes_written:int ref -> ?off:int -> ?len:int -> string -> 
+diff -up monotone-viz-1.0.1/glib/giochannel.ml.orig monotone-viz-1.0.1/glib/giochannel.ml
+--- monotone-viz-1.0.1/glib/giochannel.ml.orig	2007-03-07 22:53:54.000000000 +0100
++++ monotone-viz-1.0.1/glib/giochannel.ml	2009-02-26 14:15:28.000000000 +0100
+@@ -24,7 +24,7 @@ external new_file : string -> string -> 
+ 
+ external read_chars : t -> ?off:int -> ?len:int -> string -> 
+   [ `NORMAL of int | `AGAIN | `EOF]
+-  = "ml_g_io_channel_read_chars"
++  = "ml_mtnviz_g_io_channel_read_chars"
+ external write_chars : t -> ?bytes_written:int ref -> ?off:int -> ?len:int -> string -> 
+   [ `NORMAL of int | `AGAIN]
+   = "ml_g_io_channel_write_chars"
+diff -up monotone-viz-1.0.1/glib/ocaml-giochannel.c.orig monotone-viz-1.0.1/glib/ocaml-giochannel.c
+--- monotone-viz-1.0.1/glib/ocaml-giochannel.c.orig	2007-03-07 22:53:54.000000000 +0100
++++ monotone-viz-1.0.1/glib/ocaml-giochannel.c	2009-02-26 14:15:28.000000000 +0100
+@@ -134,7 +134,7 @@ check_substring (value s, gsize off, gsi
+ #endif
+ 
+ CAMLprim value
+-ml_g_io_channel_read_chars (value c, value o_off, value o_len, value s)
++ml_mtnviz_g_io_channel_read_chars (value c, value o_off, value o_len, value s)
+ {
+   CAMLparam1(s);
+   GError *err = NULL;
