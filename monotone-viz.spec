@@ -11,7 +11,7 @@ Patch0:         monotone-viz-1.0.1-gio.patch
 License: GPL
 Group: Development/Other
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
-Url: http://oandrieu.nerim.net/monotone-viz/
+Url: https://oandrieu.nerim.net/monotone-viz/
 BuildRequires: ocaml ocaml-lablgtk2-devel camlp4 libgnomecanvas2-devel monotone
 Requires: monotone graphviz
 
